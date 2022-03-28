@@ -1,4 +1,4 @@
-# Nimble Deployment Guide for RHOSP16.2
+# Nimble Deployment Guide for RHOSP16.1
 
 ## Overview
 
@@ -7,9 +7,9 @@ It also contains steps to deploy & configure Nimble backends for RHOSP16.2.
 
 ## Prerequisites
 
-* Red Hat OpenStack Platform 16.2 with RHEL 8.4.
+* Red Hat OpenStack Platform 16.1 with RHEL 8.2.
 
-* Nimble array 6.0.0 or higher.
+* Nimble array 6.0.0.
 
 ## Steps
 
@@ -39,7 +39,7 @@ parameter_defaults:
       namespace: registry.redhat.io/rhosp-rhel8
       name_prefix: openstack-
       name_suffix: ''
-      tag: '16.2'
+      tag: '16.1'
     tag_from_label: '{version}-{release}'        ...
 ```
 
@@ -83,7 +83,7 @@ parameter_defaults:
   ControllerExtraConfig:
 ```
 
-Sample files for iSCSI backend is available in [templates](https://github.com/mohdadilntl/hpe-nimble-cinder-rhosp16.2/blob/master/templates) folder for reference.
+Sample files for iSCSI backend is available in [templates](https://github.com/mohdadilntl/hpe-nimble-cinder-rhosp16.1/blob/master/templates) folder for reference.
 
 #### Additional Help
 
@@ -111,11 +111,11 @@ openstack overcloud deploy --templates /usr/share/openstack-tripleo-heat-templat
 3.1	SSH to controller node from undercloud and check the docker process for cinder-volume
 ```
 (overcloud) [heat-admin@overcloud-controller-0 ~]$ sudo podman ps | grep cinder
-7615e1056547  manager1.ctlplane.gse.com:8787/hpe3parcinder/openstack-cinder-volume-hpe3parcinder16-2:latest  /bin/bash /usr/lo...  12 days ago  Up 4 days ago           openstack-cinder-volume-podman-0
-c2c61e847664  manager1.ctlplane.gse.com:8787/rhosp-rhel8/openstack-cinder-backup:16.2                        /bin/bash /usr/lo...  12 days ago  Up 4 days ago           openstack-cinder-backup-podman-0
-650d205dfa69  manager1.ctlplane.gse.com:8787/rhosp-rhel8/openstack-cinder-scheduler:16.2                     kolla_start           12 days ago  Up 4 days ago           cinder_scheduler
-47b0758c5c8a  manager1.ctlplane.gse.com:8787/rhosp-rhel8/openstack-cinder-api:16.2                           kolla_start           12 days ago  Up 4 days ago           cinder_api_cron
-a304f4cee9d8  manager1.ctlplane.gse.com:8787/rhosp-rhel8/openstack-cinder-api:16.2                           kolla_start           12 days ago  Up 4 days ago           cinder_api
+7615e1056547  manager1.ctlplane.gse.com:8787/hpe3parcinder/openstack-cinder-volume-hpe3parcinder16-1:latest  /bin/bash /usr/lo...  12 days ago  Up 4 days ago           openstack-cinder-volume-podman-0
+c2c61e847664  manager1.ctlplane.gse.com:8787/rhosp-rhel8/openstack-cinder-backup:16.1                        /bin/bash /usr/lo...  12 days ago  Up 4 days ago           openstack-cinder-backup-podman-0
+650d205dfa69  manager1.ctlplane.gse.com:8787/rhosp-rhel8/openstack-cinder-scheduler:16.1                     kolla_start           12 days ago  Up 4 days ago           cinder_scheduler
+47b0758c5c8a  manager1.ctlplane.gse.com:8787/rhosp-rhel8/openstack-cinder-api:16.1                           kolla_start           12 days ago  Up 4 days ago           cinder_api_cron
+a304f4cee9d8  manager1.ctlplane.gse.com:8787/rhosp-rhel8/openstack-cinder-api:16.1                           kolla_start           12 days ago  Up 4 days ago           cinder_api
 ```
 
 3.2.	Verify that the backend details are visible in ```/etc/cinder/cinder.conf``` in the cinder-volume container
