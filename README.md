@@ -3,7 +3,7 @@
 ## Overview
 
 This page provides detailed steps on how to enable the containerization of Nimble Cinder driver on top of the OSP Cinder images.
-It also contains steps to deploy & configure Nimble backends for RHOSP16.2.
+It also contains steps to deploy & configure Nimble backends for RHOSP16.1.
 
 ## Prerequisites
 
